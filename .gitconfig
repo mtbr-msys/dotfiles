@@ -1,0 +1,12 @@
+[user]
+	name = mtbr-msys
+	email = m.mt.br.527@gmail.com
+[merge]
+	tool = vimdiff
+[core]
+	quotepath = false
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = cache
+[fetch]
+	prune = true
