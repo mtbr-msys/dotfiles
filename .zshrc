@@ -165,7 +165,3 @@ case ${OSTYPE} in
 esac
 
 # vim:set ft=zsh:
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
