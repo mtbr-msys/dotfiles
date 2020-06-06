@@ -9,7 +9,7 @@ elif [ "$WSL_DISTRO_NAME" ]; then
 fi
 # node
 export PATH="$HOME/.nodenv/bin:$PATH"
-if which ndenv > /dev/null; then
+if which nodenv > /dev/null; then
 	eval "$(nodenv init -)";
 fi
 
