@@ -28,3 +28,11 @@ fi
 
 # dokku
 alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
+
+#DEVKIT
+export DEVKITPRO=/opt/devkitpro
+export DEVKITPPC=$DEVKITPRO/devkitPPC
+export PATH=$DEVKITPPC/bin:$DEVKITPRO/tools/bin:$PATH
+
+#THEOS
+export THEOS=~/theos
