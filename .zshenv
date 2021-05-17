@@ -2,6 +2,7 @@ if [ "$(uname)" = 'Darwin' ]; then
 	setopt no_global_rcs
 	export PATH="/usr/local/bin":$PATH
 	export PATH="/usr/local/sbin:$PATH"
+	export PATH="/usr/local/opt/openssl/bin:$PATH"
 	export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 	export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 elif [ "$WSL_DISTRO_NAME" ]; then
