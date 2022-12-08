@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#JAVA
+if which jenv > /dev/null; then
+    cd "$(jenv root)"
+	git pull
+    cd $HOME
+fi
+
+# node
+export PATH="$HOME/.nodenv/bin:$PATH"
+if which nodenv > /dev/null; then
+    cd "$(nodenv root)"
+	git pull
+    cd "$(nodenv root)"/plugins/node-build
+	git pull
+    cd $HOME
+fi
+
+# ruby 
+if which rbenv > /dev/null; then
+    cd "$(rbenv root)"
+	git pull
+    cd "$(rbenv root)"/plugins/ruby-build
+	git pull
+    cd $HOME
+fi
+
+# python
+if which pyenv > /dev/null; then
+    cd "$(pyenv root)"
+	git pull
+    cd $HOME
+fi
+

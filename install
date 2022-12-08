@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "$(uname)" = 'Darwin' ]; then
+    # install homebew 
+    mkdir $HOME/.homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
+fi
+# install rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+mkdir -p ~/.rbenv/plugins
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+# install pyenv
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+# install nodenv
+git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+mkdir -p ~/.nodenv/plugins
+git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
+# install jenv
+git clone https://github.com/jenv/jenv.git ~/.jenv
