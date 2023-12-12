@@ -9,6 +9,7 @@ if [ "$(uname)" = 'Darwin' ]; then
 	export HOMEBREW_CACHE=$HOME/.homebrew/cache
 elif [ "$WSL_DISTRO_NAME" ]; then
 	export PATH="/mnt/c/Program Files/Microsoft VS Code/bin:$PATH"
+	export LESSCHARSET='utf-8'
 fi
 
 #JAVA
