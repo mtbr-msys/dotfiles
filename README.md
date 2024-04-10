@@ -18,7 +18,7 @@ cd dotfiles
 
 
 ```bash
-sudo apt install zsh git curl wget build-essential pkg-config libtiff-dev libxml2-dev libxpm-dev libpam-dev tzdata locales-all　libsqlite3-dev　libssl-dev　libbz2-dev libcurl4-openssl-dev libpng-dev libonig-dev libreadline-dev libtidy-dev libxslt-dev　zip unzip libzip-dev
+sudo apt install zsh git curl wget zip unzip build-essential pkg-config autoconf tzdata locales-all libtiff-dev libxml2-dev libxpm-dev libpam-dev libsqlite3-dev　libssl-dev　libbz2-dev libcurl4-openssl-dev libpng-dev libonig-dev libreadline-dev libtidy-dev libxslt-devlibzip-dev libffi-dev libyaml-dev
 ```
 
 
