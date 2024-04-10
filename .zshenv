@@ -31,11 +31,18 @@ if which rbenv > /dev/null; then
 fi
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
 if which pyenv > /dev/null; then
 	eval "$(pyenv init --path)";
 fi
+
+# php
+export PATH="$HOME/.phpenv/bin:$PATH"
+if which phpenv > /dev/null; then
+	eval "$(phpenv init -)"
+fi
+
 
 # bin
 if [ -d "$HOME/bin" ] ; then
