@@ -15,3 +15,7 @@ mkdir -p ~/.nodenv/plugins
 git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
 # install jenv
 git clone https://github.com/jenv/jenv.git ~/.jenv
+# install phpenv
+git clone https://github.com/phpenv/phpenv.git ~/.phpenv
+mkdir -p ~/.phpenv/plugins
+git clone https://github.com/php-build/php-build ~/.phpenv/plugins/php-build
