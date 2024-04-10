@@ -1,6 +1,7 @@
 # 少し凝った zshrc
 # License : MIT
 # http://mollifier.mit-license.org/
+# https://gist.github.com/mollifier/4979906
 
 ########################################
 # 環境変数
