@@ -24,6 +24,7 @@ sudo apt install zsh git curl wget build-essential pkg-config libtiff-dev libxml
 
 and more
 
+
 # phpenv config
 
 use developer mode
@@ -38,3 +39,8 @@ with PECL extention
 export PHP_BUILD_INSTALL_EXTENSION="yaml=2.0.4 redis=5.0.2"
 ```
 
+in low spec machine
+
+```bash
+export PHP_BUILD_EXTRA_MAKE_ARGUMENTS=-j1
+```
