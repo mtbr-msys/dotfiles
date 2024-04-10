@@ -30,8 +30,6 @@ fi
 if which pyenv > /dev/null; then
     cd "$(pyenv root)"
 	git pull
-    cd $(phpenv root)/plugins/php-build
-    git pull
     cd $HOME
 fi
 
@@ -39,5 +37,9 @@ fi
 if which phpenv > /dev/null; then
     cd "$(phpenv root)"
 	git pull
+    cd $(phpenv root)/plugins/php-build
+    git pull
+    cd $(phpenv root)/plugins/phpenv-composer
+    git pull
     cd $HOME
 fi
