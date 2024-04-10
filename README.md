@@ -36,7 +36,7 @@ phpenv install -i development <VERSION>
 with PECL extention
 
 ```bash
-export PHP_BUILD_INSTALL_EXTENSION="yaml=2.0.4 redis=5.0.2"
+export PHP_BUILD_INSTALL_EXTENSION="yaml=2.0.4 redis=5.0.2 apcu=@ imagick=@ pdo_mysql=1.0.2"
 ```
 
 in low spec machine
