@@ -8,7 +8,6 @@ if which jenv > /dev/null; then
 fi
 
 # node
-export PATH="$HOME/.nodenv/bin:$PATH"
 if which nodenv > /dev/null; then
     cd "$(nodenv root)"
 	git pull

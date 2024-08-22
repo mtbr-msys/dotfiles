@@ -5,48 +5,52 @@ if [ "$(uname)" = 'Darwin' ]; then
 	export PATH="/usr/local/opt/openssl/bin:$PATH"
 	export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 	export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-	export PATH=$HOME/.homebrew/bin:$PATH
-	export HOMEBREW_CACHE=$HOME/.homebrew/cache
+	export PATH=$HOME/.homebrew_$(uname -m)/bin:$PATH
+	export HOMEBREW_CACHE=$HOME/.homebrew_$(uname -m)/cache
 elif [ "$WSL_DISTRO_NAME" ]; then
 	export PATH="/mnt/c/Program Files/Microsoft VS Code/bin:$PATH"
 	export LESSCHARSET='utf-8'
 fi
 
 #JAVA
-export PATH="$HOME/.jenv/bin:$PATH"
+export JENV_ROOT="$HOME/.jenv_$(uname -m)"
+export PATH="$JENV_ROOT/bin:$PATH"
 if which jenv > /dev/null; then
 	eval "$(jenv init -)"
 fi
 
 # node
-export PATH="$HOME/.nodenv/bin:$PATH"
+export NODENV_ROOT="$HOME/.nodenv_$(uname -m)"
+export PATH="$NODENV_ROOT/bin:$PATH"
 if which nodenv > /dev/null; then
 	eval "$(nodenv init -)";
 fi
 
 # ruby 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="$HOME/.rbenv_$(uname -m)/"
+export PATH="$RBENV_ROOT/bin:$PATH"
 if which rbenv > /dev/null; then
 	eval "$(rbenv init -)";
 fi
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv_$(uname -m)"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if which pyenv > /dev/null; then
 	eval "$(pyenv init --path)";
 fi
 
 # php
-export PATH="$HOME/.phpenv/bin:$PATH"
+export PHPENV_ROOT="$HOME/.phpenv_$(uname -m)"
+export PATH="$PHPENV_ROOT/bin:$PATH"
 if which phpenv > /dev/null; then
 	eval "$(phpenv init -)"
 fi
 
 
 # bin
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/bin_$(uname -m)" ] ; then
+    PATH="$HOME/bin_$(uname -m):$PATH"
 fi
 
 # dokku
