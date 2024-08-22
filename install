@@ -1,22 +1,22 @@
 #!/bin/bash
 if [ "$(uname)" = 'Darwin' ]; then
-    # install homebew 
-    mkdir $HOME/.homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
+    # install homebew
+    mkdir $HOME/.homebrew_$(uname -m) && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew_$(uname -m)
 fi
-# install rbenv
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-mkdir -p ~/.rbenv/plugins
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-# install pyenv
-git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-# install nodenv
-git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-mkdir -p ~/.nodenv/plugins
-git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
 # install jenv
-git clone https://github.com/jenv/jenv.git ~/.jenv
+git clone https://github.com/jenv/jenv.git $JENV_ROOT
+# install nodenv
+git clone https://github.com/nodenv/nodenv.git $NODENV_ROOT
+mkdir -p ~/.nodenv_$(uname -m)/plugins
+git clone https://github.com/nodenv/node-build.git "$NODENV_ROOT/plugins/node-build"
+# install rbenv
+git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
+mkdir -p ~/.rbenv_$(uname -m)/plugins
+git clone https://github.com/rbenv/ruby-build.git "$RBENV_ROOT/plugins/ruby-build"
+# install pyenv
+git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
 # install phpenv
-git clone https://github.com/phpenv/phpenv.git ~/.phpenv
-mkdir -p ~/.phpenv/plugins
-git clone https://github.com/php-build/php-build ~/.phpenv/plugins/php-build
-git clone https://github.com/ngyuki/phpenv-composer.git ~/.phpenv/plugins/phpenv-composer
+git clone https://github.com/phpenv/phpenv.git $PHPENV_ROOT
+mkdir -p ~/.phpenv_$(uname -m)/plugins
+git clone https://github.com/php-build/php-build "$PHPENV_ROOT/plugins/php-build"
+git clone https://github.com/ngyuki/phpenv-composer.git "$PHPENV_ROOT/plugins/phpenv-composer"
