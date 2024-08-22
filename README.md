@@ -14,6 +14,13 @@ cd dotfiles
 ./update
 ```
 
+# How To Migrate arch suffix
+
+```bash
+cd dotfiles
+./migrate_arch
+```
+
 # requirements (Ubuntu)
 
 
