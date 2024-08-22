@@ -1,0 +1,22 @@
+if [ "$(uname)" = 'Darwin' ]; then
+    # homebew
+    mv "$HOME/.homebrew" "$HOME/.homebrew_$(uname -m)"
+fi
+
+# jenv
+mv "$HOME/.jenv" "$HOME/.jenv_$(uname -m)"
+
+# node
+mv "$HOME/.nodenv" "$HOME/.nodenv_$(uname -m)"
+
+# ruby 
+mv "$HOME/.rbenv" "$HOME/.rbenv_$(uname -m)/"
+
+# python
+mv "$HOME/.pyenv" "$HOME/.pyenv_$(uname -m)"
+
+# php
+mv "$HOME/.phpenv" "$HOME/.phpenv_$(uname -m)"
+
+# bin
+mv "$HOME/.bin" "$HOME/bin_$(uname -m)"
