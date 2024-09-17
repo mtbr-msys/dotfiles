@@ -7,6 +7,7 @@ if [ "$(uname)" = 'Darwin' ]; then
 	export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 	export PATH=$HOME/.homebrew_$(uname -m)/bin:$PATH
 	export HOMEBREW_CACHE=$HOME/.homebrew_$(uname -m)/cache
+	ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 elif [ "$WSL_DISTRO_NAME" ]; then
 	export PATH="/mnt/c/Program Files/Microsoft VS Code/bin:$PATH"
 	export LESSCHARSET='utf-8'
