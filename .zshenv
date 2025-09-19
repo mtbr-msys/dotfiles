@@ -22,6 +22,8 @@ if [ "$(uname)" = 'Darwin' ]; then
 	
 elif [ "$WSL_DISTRO_NAME" ]; then
 	export PATH="/mnt/c/Program Files/Microsoft VS Code/bin:$PATH"
+	export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+	alias open='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
 	export LESSCHARSET='utf-8'
 	if [ -z "$SSH_AUTH_SOCK" ]; then
 	# Check for a currently running instance of the agent
