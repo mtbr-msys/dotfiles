@@ -1,51 +1,47 @@
 #!/bin/bash
+set -euo pipefail
 
-#JAVA
-if which jenv > /dev/null; then
-    cd "$(jenv root)"
-	git pull
-    cd $HOME
+pull_repo() {
+    local dest="$1"
+
+    if [ -d "$dest/.git" ]; then
+        git -C "$dest" pull --ff-only
+    fi
+}
+
+# JAVA
+if command -v jenv >/dev/null 2>&1; then
+    pull_repo "$(jenv root)"
 fi
 
 # node
-if which nodenv > /dev/null; then
-    cd "$(nodenv root)"
-	git pull
-    cd "$(nodenv root)"/plugins/node-build
-	git pull
-    cd $HOME
+if command -v nodenv >/dev/null 2>&1; then
+    nodenv_root="$(nodenv root)"
+    pull_repo "$nodenv_root"
+    pull_repo "$nodenv_root/plugins/node-build"
 fi
 
-# ruby 
-if which rbenv > /dev/null; then
-    cd "$(rbenv root)"
-	git pull
-    cd "$(rbenv root)"/plugins/ruby-build
-	git pull
-    cd $HOME
+# ruby
+if command -v rbenv >/dev/null 2>&1; then
+    rbenv_root="$(rbenv root)"
+    pull_repo "$rbenv_root"
+    pull_repo "$rbenv_root/plugins/ruby-build"
 fi
 
 # python
-if which pyenv > /dev/null; then
-    cd "$(pyenv root)"
-	git pull
-    cd $HOME
+if command -v pyenv >/dev/null 2>&1; then
+    pull_repo "$(pyenv root)"
 fi
 
 # php
-if which phpenv > /dev/null; then
-    cd "$(phpenv root)"
-	git pull
-    cd $(phpenv root)/plugins/php-build
-    git pull
-    cd $(phpenv root)/plugins/phpenv-composer
-    git pull
-    cd $HOME
+if command -v phpenv >/dev/null 2>&1; then
+    phpenv_root="$(phpenv root)"
+    pull_repo "$phpenv_root"
+    pull_repo "$phpenv_root/plugins/php-build"
+    pull_repo "$phpenv_root/plugins/phpenv-composer"
 fi
 
 # go
-if which goenv > /dev/null; then
-    cd "$(goenv root)"
-    git pull
-    cd $HOME
+if command -v goenv >/dev/null 2>&1; then
+    pull_repo "$(goenv root)"
 fi
