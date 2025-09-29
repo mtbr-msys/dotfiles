@@ -20,3 +20,5 @@ git clone https://github.com/phpenv/phpenv.git $PHPENV_ROOT
 mkdir -p ~/.phpenv_$(uname -m)/plugins
 git clone https://github.com/php-build/php-build "$PHPENV_ROOT/plugins/php-build"
 git clone https://github.com/ngyuki/phpenv-composer.git "$PHPENV_ROOT/plugins/phpenv-composer"
+# install goenv
+git clone https://github.com/go-nv/goenv.git $GOENV_ROOT

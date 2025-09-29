@@ -42,3 +42,10 @@ if which phpenv > /dev/null; then
     git pull
     cd $HOME
 fi
+
+# go
+if which goenv > /dev/null; then
+    cd "$(goenv root)"
+    git pull
+    cd $HOME
+fi
