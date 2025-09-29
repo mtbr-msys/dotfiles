@@ -72,6 +72,12 @@ if which phpenv > /dev/null; then
 	eval "$(phpenv init -)"
 fi
 
+# go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+if which goenv > /dev/null; then
+	eval "$(goenv init -)"
+fi
 
 # bin
 if [ -d "$HOME/bin_$(uname -m)" ] ; then
