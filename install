@@ -1,24 +1,71 @@
 #!/bin/bash
+set -euo pipefail
+
+arch_suffix="$(uname -m)"
+
+: "${JENV_ROOT:="$HOME/.jenv_${arch_suffix}"}"
+: "${NODENV_ROOT:="$HOME/.nodenv_${arch_suffix}"}"
+: "${RBENV_ROOT:="$HOME/.rbenv_${arch_suffix}"}"
+: "${PYENV_ROOT:="$HOME/.pyenv_${arch_suffix}"}"
+: "${PHPENV_ROOT:="$HOME/.phpenv_${arch_suffix}"}"
+: "${GOENV_ROOT:="$HOME/.goenv"}"
+
+clone_or_update() {
+    local repo="$1"
+    local dest="$2"
+
+    if [ -d "$dest/.git" ]; then
+        git -C "$dest" pull --ff-only
+        return
+    fi
+
+    if [ -e "$dest" ] && [ ! -d "$dest" ]; then
+        printf 'skip: %s exists but is not a directory\n' "$dest" >&2
+        return
+    fi
+
+    if [ -d "$dest" ] && [ "$(ls -A "$dest" 2>/dev/null)" ]; then
+        printf 'skip: %s exists but is not a git repository\n' "$dest" >&2
+        return
+    fi
+
+    mkdir -p "$(dirname "$dest")"
+    git clone "$repo" "$dest"
+}
+
 if [ "$(uname)" = 'Darwin' ]; then
-    # install homebew
-    mkdir $HOME/.homebrew_$(uname -m) && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew_$(uname -m)
+    # install homebrew
+    homebrew_prefix="$HOME/.homebrew_${arch_suffix}"
+    if [ ! -d "$homebrew_prefix/.git" ]; then
+        mkdir -p "$homebrew_prefix"
+        curl -L https://github.com/Homebrew/brew/tarball/master |
+            tar xz --strip 1 -C "$homebrew_prefix"
+    else
+        git -C "$homebrew_prefix" pull --ff-only
+    fi
 fi
+
 # install jenv
-git clone https://github.com/jenv/jenv.git $JENV_ROOT
+clone_or_update https://github.com/jenv/jenv.git "$JENV_ROOT"
+
 # install nodenv
-git clone https://github.com/nodenv/nodenv.git $NODENV_ROOT
-mkdir -p ~/.nodenv_$(uname -m)/plugins
-git clone https://github.com/nodenv/node-build.git "$NODENV_ROOT/plugins/node-build"
+clone_or_update https://github.com/nodenv/nodenv.git "$NODENV_ROOT"
+mkdir -p "$NODENV_ROOT/plugins"
+clone_or_update https://github.com/nodenv/node-build.git "$NODENV_ROOT/plugins/node-build"
+
 # install rbenv
-git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
-mkdir -p ~/.rbenv_$(uname -m)/plugins
-git clone https://github.com/rbenv/ruby-build.git "$RBENV_ROOT/plugins/ruby-build"
+clone_or_update https://github.com/sstephenson/rbenv.git "$RBENV_ROOT"
+mkdir -p "$RBENV_ROOT/plugins"
+clone_or_update https://github.com/rbenv/ruby-build.git "$RBENV_ROOT/plugins/ruby-build"
+
 # install pyenv
-git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
+clone_or_update https://github.com/yyuu/pyenv.git "$PYENV_ROOT"
+
 # install phpenv
-git clone https://github.com/phpenv/phpenv.git $PHPENV_ROOT
-mkdir -p ~/.phpenv_$(uname -m)/plugins
-git clone https://github.com/php-build/php-build "$PHPENV_ROOT/plugins/php-build"
-git clone https://github.com/ngyuki/phpenv-composer.git "$PHPENV_ROOT/plugins/phpenv-composer"
+clone_or_update https://github.com/phpenv/phpenv.git "$PHPENV_ROOT"
+mkdir -p "$PHPENV_ROOT/plugins"
+clone_or_update https://github.com/php-build/php-build "$PHPENV_ROOT/plugins/php-build"
+clone_or_update https://github.com/ngyuki/phpenv-composer.git "$PHPENV_ROOT/plugins/phpenv-composer"
+
 # install goenv
-git clone https://github.com/go-nv/goenv.git $GOENV_ROOT
+clone_or_update https://github.com/go-nv/goenv.git "$GOENV_ROOT"
