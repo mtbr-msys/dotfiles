@@ -37,6 +37,31 @@ elif [ "$WSL_DISTRO_NAME" ]; then
 	fi
 fi
 
+# dokku
+alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
+
+#DEVKIT
+export DEVKITPRO=/opt/devkitpro
+export DEVKITPPC=$DEVKITPRO/devkitPPC
+export PATH=$DEVKITPPC/bin:$DEVKITPRO/tools/bin:$PATH
+
+#THEOS
+export THEOS=~/theos
+
+#Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+#flutter
+export FLUTTER_ROOT=$HOME/flutter
+export PATH=$PATH:$FLUTTER_ROOT/bin
+
+#wonderful SDK
+
+# AIエージェントの実行時には設定をスキップ
+if [[ $- != *i* ]]; then
+  return
+fi
+
 #JAVA
 export JENV_ROOT="$HOME/.jenv_$(uname -m)"
 export PATH="$JENV_ROOT/bin:$PATH"
@@ -84,20 +109,3 @@ if [ -d "$HOME/bin_$(uname -m)" ] ; then
     PATH="$HOME/bin_$(uname -m):$PATH"
 fi
 
-# dokku
-alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
-
-#DEVKIT
-export DEVKITPRO=/opt/devkitpro
-export DEVKITPPC=$DEVKITPRO/devkitPPC
-export PATH=$DEVKITPPC/bin:$DEVKITPRO/tools/bin:$PATH
-
-#THEOS
-export THEOS=~/theos
-
-#Android SDK
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
-#flutter
-export FLUTTER_ROOT=$HOME/flutter
-export PATH=$PATH:$FLUTTER_ROOT/bin
