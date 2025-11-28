@@ -62,6 +62,24 @@ Additional libraries may be needed depending on the language versions you build.
 `curl` and `tar` are available (they are by default) and allow execution of
 scripts downloaded from GitHub.
 
+### Wonderful Toolchain (Linux)
+
+The [official Wonderful wiki](https://wonderful.asie.pl/wiki/doku.php?id=getting_started:linux)
+documents the SDK bootstrap process. Highlights:
+
+- Needs a reasonably recent Linux distro, x86_64/AArch64 CPU, and base tools (`bash`, `git`, `make`).
+- Download the matching bootstrap archive: [`wf-bootstrap-x86_64`](https://wonderful.asie.pl/bootstrap/wf-bootstrap-x86_64.tar.gz) or [`wf-bootstrap-aarch64`](https://wonderful.asie.pl/bootstrap/wf-bootstrap-aarch64.tar.gz).
+- Install to `/opt/wonderful` (hard requirement right now):
+  ```bash
+  sudo mkdir -p /opt/wonderful
+  sudo chown -R "$USER" /opt/wonderful
+  cd /opt/wonderful && tar xzvf /path/to/wf-bootstrap-<arch>.tar.gz
+  /opt/wonderful/bin/wf-pacman -Syu wf-tools   # no sudo
+  source /opt/wonderful/bin/wf-env             # exports toolchain paths
+  ```
+- When done, continue with the [post-install guide](https://wonderful.asie.pl/wiki/doku.php?id=getting_started:finish).
+- Troubleshooting: if `wf-pacman` complains about `setting certificate file: /etc/ssl/certs/ca-certificates.crt`, install your distro’s CA bundle (e.g., `sudo apt install ca-certificates` on Debian/Ubuntu).
+
 ## PHP Build Tips
 
 Developer-mode build (skips stripping):

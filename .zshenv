@@ -55,8 +55,6 @@ export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/cmdline-to
 export FLUTTER_ROOT=$HOME/flutter
 export PATH=$PATH:$FLUTTER_ROOT/bin
 
-#wonderful SDK
-
 # AIエージェントの実行時には設定をスキップ
 if [[ $- != *i* ]]; then
   return
@@ -109,3 +107,7 @@ if [ -d "$HOME/bin_$(uname -m)" ] ; then
     PATH="$HOME/bin_$(uname -m):$PATH"
 fi
 
+#wonderful SDK
+if [ -s /opt/wonderful/bin/wf-env ]; then
+	source /opt/wonderful/bin/wf-env
+fi
