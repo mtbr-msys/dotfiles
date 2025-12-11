@@ -7,6 +7,7 @@ if [ "$(uname)" = 'Darwin' ]; then
 	export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 	export PATH=$HOME/.homebrew_$(uname -m)/bin:$PATH
 	export HOMEBREW_CACHE=$HOME/.homebrew_$(uname -m)/cache
+	export HOMEBREW_PREFIX=`brew --prefix`
 	export PATH="$HOME/.rd/bin:$PATH"
 
 	if [ -z "$SSH_AUTH_SOCK" ]; then
@@ -35,6 +36,9 @@ elif [ "$WSL_DISTRO_NAME" ]; then
 	eval `cat $HOME/.ssh/ssh-agent` > /dev/null
 	ssh-add ~/.ssh/id_ed25519 2> /dev/null
 	fi
+	alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+	alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+
 fi
 
 # dokku
